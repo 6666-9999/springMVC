@@ -21,6 +21,11 @@ public class AdviceController {
 	@Autowired
 	private DistrictService ds;
 
+	/**
+	 * 优先查询街道，类型
+	 * @param mo
+	 * @return
+	 */
 	@ModelAttribute
 	public Model advice(Model mo) {
 		List<District> dlist = ds.getAll();
