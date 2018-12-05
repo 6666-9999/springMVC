@@ -18,7 +18,11 @@ import com.cssl.pojo.House;
 import com.cssl.pojo.Users;
 import com.cssl.service.HouseService;
 import com.github.pagehelper.Page;
-
+/**
+ * 控制器
+ * @author asua
+ *
+ */
 @Controller
 public class HouseConreoller {
 	@Autowired
