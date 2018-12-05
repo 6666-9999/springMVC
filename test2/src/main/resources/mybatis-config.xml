@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!--自动映射 -->
+		<setting name="autoMappingBehavior" value="FULL" />
+		<!-- 开启全局延时加载的开关 -->
+		<setting name="lazyLoadingEnabled" value="true" />
+		<!--开启按需加载 -->
+		<setting name="aggressiveLazyLoading" value="false" />
+	</settings>
+	
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!--pageSize=0,相当于没有执行分页，返回值仍是Page -->
+			<property name="pageSizeZero" value="true" />
+			<!--合理化设置，pageIndex<0||pageIndex>totatCount。自动查询第一页或是最后一页 -->
+			<property name="reasonable" value="true" />
+		</plugin>
+	</plugins>
+</configuration>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cssl.dao.DistrictMapper">
+	<resultMap type="district" id="myDis">
+		<id column="did" property="did" />
+		<collection property="set" ofType="Street" column="did"
+			select="getStreetBySdid">
+		</collection>
+	</resultMap>
+	<select id="getStreetBySdid" parameterType="int" resultType="street">
+		SELECT * FROM street WHERE sdid=#{did}
+	</select>
+	<select id="getAll" resultMap="myDis">
+		select * from district
+	</select>
+</mapper>
