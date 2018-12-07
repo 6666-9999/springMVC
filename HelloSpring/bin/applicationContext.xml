@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<bean id="helloSpring" class="com.cssl.spring.HelloSpring">
+		<property name="who">
+			<value>Spring</value>
+		</property>
+	</bean>
+	<bean id="zhangGa" class="com.cssl.spring.Greeting">
+		<property name="person">
+			<value>张嘎</value>
+		</property>
+		<property name="words">
+			<value>三天不打小鬼子，手都痒痒！</value>
+		</property>
+	</bean>
+	<bean id="rod" class="com.cssl.spring.Greeting">
+		<property name="person">
+			<value>Rod</value>
+		</property>
+		<property name="words">
+			<value>世界上有10种人，认识二进制的和不认识二进制的。</value>
+		</property>
+	</bean>
+	<!-- 定义彩色墨盒Bean，id是colorInk -->
+	<bean id="colorInk" class="com.cssl.print.ColorInk" />
+	<!-- 定义灰色墨盒Bean，id是greyInk -->
+	<bean id="greyInk" class="com.cssl.print.GreyInk" />
+	<!-- 定义A4纸张Bean,id是a4Paper -->
+	<!-- 通过setCharPerLine()方法为charPerLine属性注入每行字符数 -->
+	<!-- 通过serLinePerPage()方法为linePerPage属性注入每页行数 -->
+	<bean id="a4Paper" class="com.cssl.print.TestPaper">
+		<property name="charPerLine" value="10" />
+		<property name="linePerPage" value="8" />
+	</bean>
+	<!-- 定义B5纸张Bean,id是b5Paper -->
+	<bean id="b5Paper" class="com.cssl.print.TestPaper">
+		<property name="charPerLine" value="6" />
+		<property name="linePerPage" value="5" />
+	</bean>
+	<!-- 组装打印机。定义打印机Bean，该Bean的id是printer，class指定该Bean实例的实现类 -->
+	<bean id="printer" class="com.cssl.print.Printer">
+		<!-- 通过ref属性注入已经定义好的bean -->
+		<!-- 注入彩色墨盒 -->
+		<property name="ink" ref="colorInk" />
+		<!-- 注入B5定义纸张 -->
+		<property name="paper" ref="b5Paper" />
+	</bean>
+</beans>
